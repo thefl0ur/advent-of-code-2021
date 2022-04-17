@@ -21,11 +21,13 @@ class SonarSweep:
         if len(self.data) < self.current_index + 1 + self.window_size:
             raise NoDataException
 
-        value1 = self.data[self.current_index: self.current_index + self.window_size]
+        value1 = self.data[
+            self.current_index: self.current_index + self.window_size]
         self.current_index += 1
 
-        value2 = self.data[self.current_index: self.current_index + self.window_size]
-      
+        value2 = self.data[
+            self.current_index: self.current_index + self.window_size]
+
         return value1, value2
 
     def get_increments_count(self) -> int:
@@ -35,8 +37,8 @@ class SonarSweep:
                 value1, value2 = self._get_next_window_pair()
             except NoDataException:
                 break
-            
+
             if (sum(value1) < sum(value2)):
                 increments_count += 1
-                
+
         return increments_count

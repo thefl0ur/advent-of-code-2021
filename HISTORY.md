@@ -1,3 +1,8 @@
+18.04.2022
+
+Before jumping into optimisation or my solutions and solving remaied puzzles cli was created.
+I'm not great with making sweet and pretty cli, so for now it is strange and ugly. I hope it can be improved later.
+
 05.04.2022
 
 Repo created.

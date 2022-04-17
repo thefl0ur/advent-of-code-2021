@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Dive:
     horizontal = 0
     depth = 0
@@ -13,14 +14,14 @@ class Dive:
 
             if vector == 'up':
                 self.depth -= int(value)
-            
+
             if vector == 'down':
-                self.depth += int(value);
+                self.depth += int(value)
 
             if vector == 'forward':
                 self.horizontal += int(value)
 
-        return self.horizontal * self.depth;
+        return self.horizontal * self.depth
 
     def _parce_line(self, line: str):
         vector, value = line.split(' ')
@@ -36,7 +37,7 @@ class DiveAim(Dive):
 
             if vector == 'up':
                 self.aim -= int(value)
-            
+
             if vector == 'down':
                 self.aim += int(value)
 
@@ -44,4 +45,4 @@ class DiveAim(Dive):
                 self.horizontal += int(value)
                 self.depth += self.aim * int(value)
 
-        return self.horizontal * self.depth;
+        return self.horizontal * self.depth
