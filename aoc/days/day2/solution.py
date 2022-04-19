@@ -1,12 +1,27 @@
-from aoc.days.day2.helpers import read_data
-from aoc.days.day2.dive import Dive, DiveAim
+def part1(input_file: str) -> int:
+    depth, horizontal = 0, 0
+    with open(input_file, 'r') as file:
+        for line in file:
+            (vector, value) = line.split(' ', 2)
+            value = int(value)
+            if vector == 'forward':
+                horizontal += value
+            else:
+                depth += value if vector == 'down' else - value
+
+    return horizontal * depth
 
 
-def part1(input_data: str) -> int:
-    dive = Dive(read_data(input_data))
-    return dive.calculcate_position()
+def part2(input_file: str) -> int:
+    aim, depth, horizontal = 0, 0, 0
+    with open(input_file, 'r') as file:
+        for line in file:
+            vector, value = line.split(' ', 2)
+            value = int(value)
+            if vector == 'forward':
+                horizontal += value
+                depth += aim * value
+            else:
+                aim += value if vector == 'down' else - value
 
-
-def part2(input_data: str) -> int:
-    dive = DiveAim(read_data(input_data))
-    return dive.calculcate_position()
+    return horizontal * depth
