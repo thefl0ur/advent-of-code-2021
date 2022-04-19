@@ -9,9 +9,7 @@ class Dive:
         self.data = data
 
     def calculcate_position(self) -> int:
-        for line in self.data:
-            vector, value = self._parce_line(line)
-
+        for vector, value in self.data:
             if vector == 'up':
                 self.depth -= int(value)
 
@@ -23,18 +21,11 @@ class Dive:
 
         return self.horizontal * self.depth
 
-    def _parce_line(self, line: str):
-        vector, value = line.split(' ')
-        return vector, value
-
-
 class DiveAim(Dive):
     aim = 0
 
     def calculcate_position(self) -> int:
-        for line in self.data:
-            vector, value = self._parce_line(line)
-
+        for vector, value in self.data:
             if vector == 'up':
                 self.aim -= int(value)
 
