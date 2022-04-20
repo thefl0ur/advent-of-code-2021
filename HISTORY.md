@@ -1,6 +1,10 @@
+20.04.2022
+
+Improve my solution for day 2.
+
 19.04.2022
 
-Improve my solution for day 1. I thought it was good, but ot was not. Also, add some notes about process of optimizatin. 
+Improve my solution for day 1. I thought it was good, but ot was not. Also, add some notes about process of optimizatoin. 
 
 18.04.2022
 

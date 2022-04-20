@@ -160,4 +160,4 @@ At this moment I run out of ideas how to really increase performance, so i just 
 | single function    | 20.6543   | 0.001799 | 20.6541   | 0.001733 |
 | final              | 20.6543   | 0.001453 | 20.6541   | 0.001587 |
 
-This time results was not so excellent. Max performance was increased only by 32% and memory consumption decreased by 75% only by the fact that data was not bees stored in memory but processed ob the fly.
+This time results was not so excellent. Max performance was increased only by 32% and memory consumption decreased by 75% only by the fact that data was not been stored in memory but processed on the fly.
