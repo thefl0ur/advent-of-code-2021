@@ -23,3 +23,7 @@ def process_input(day, part):
 
 def get_day_folder(date):
     return f"{os.getcwd()}/aoc/days/day{date}"
+
+
+def get_tests_folder():
+    return f"{os.getcwd()}/aoc/tests"

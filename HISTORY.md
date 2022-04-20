@@ -1,3 +1,9 @@
+21.04.2022
+
+Tests added.
+Duiring the optimization I have to check that refactored solution actually give correct result,
+so instead of manual work I prefer to semi-automate that process.
+
 20.04.2022
 
 Improve my solution for day 2.
