@@ -1,3 +1,7 @@
+22.04.2022
+
+Go back to day 1 and improve it even more
+
 21.04.2022
 
 Tests added.

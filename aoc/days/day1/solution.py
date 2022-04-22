@@ -1,20 +1,26 @@
-from typing import List
+from collections import deque
 
 
-def read_data(file_name: str) -> List[int]:
-    with open(file_name, 'r') as file:
-        return [int(line) for line in file]
+def get_increments_count(file_path: str, window_size: int = 1) -> int:
+    sum, current = 0, None
+    file = open(file_path, 'r')
+    data = deque(
+        map(int, [file.__next__() for _ in range(window_size)]),
+        maxlen=4,
+    )
+    for line in file:
+        current = int(line)
+        if data.popleft() < current:
+            sum += 1
+        data.append(current)
+
+    file.close()
+    return sum
 
 
-def get_increments_count(input_data, window_size):
-    return sum(
-        [1 if input_data[index] < input_data[index+window_size] else 0
-            for index in range(0, len(input_data)-window_size)])
+def part1(file_path: str) -> int:
+    return get_increments_count(file_path)
 
 
-def part1(input_data: str) -> int:
-    return get_increments_count(read_data(input_data), 1)
-
-
-def part2(input_data: str) -> int:
-    return get_increments_count(read_data(input_data), 3)
+def part2(file_path: str) -> int:
+    return get_increments_count(file_path, 3)

@@ -121,6 +121,15 @@ Running perfomance test  [####################################]  100%  Finished
 
 Almost nothing was improved here. Looking at memory consumption, we make it even worse. But i loves it.
 
+Speaking about memory. For now full data set is loaded in memory, while we eed only small part of data at any moment.
+So I again decide to refactor code. Also I made small improvements, like manual handling file, use deque instead of list, etc.
+|   DAY |   MEM 1, Kb | TIME 1         |   MEM 2, Kb | TIME 2         |
+|-------|-------------|----------------|-------------|----------------|
+|     1 |    21.5905  | 0:00:00.001868 |       21.59 | 0:00:00.001752 |
+
+As we can see, speed decreased to the level of basic for loop, but memory usage decreased dramatically. 
+I guess it is optimal solution - in both speed and memory.
+
 #### Analysis
 
 Summing up my data. 
@@ -133,5 +142,9 @@ Summing up my data.
 | While loop        | 0.002261         | 0.002546         |
 | For loop          | 0.001810         | 0.001602         |
 | Sum() on list     | 0.001600         | 0.001492         |
+| Partial data load | 0.001868         | 0.001752         |
 
-After optimization I increase performance on ~75% in execution time.
+After optimization I increase performance on ~75% max in execution time.
+But fastest is not optimal due memory usage, so for optimal solution speed increase was about 73%.
+
+Memory usage in naive solution is was about 84.6 and 21.6 in optimized, memory optimization was almost 4x times.
