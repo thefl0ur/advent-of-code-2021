@@ -1,3 +1,7 @@
+26.04.2022
+
+Refactor day 3 puzzles.
+
 22.04.2022
 
 Go back to day 1 and improve it even more
