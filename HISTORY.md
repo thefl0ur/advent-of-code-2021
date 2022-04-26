@@ -1,3 +1,8 @@
+26.04.2022
+
+Refactor day 3 puzzles.
+
+
 21.04.2022
 
 Tests added.
