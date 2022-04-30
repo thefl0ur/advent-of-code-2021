@@ -1,4 +1,8 @@
-from typing import List
+from typing import List, Tuple, TypedDict, Union
+
+Matrix = List[List[Union[str, int]]]
+Points = TypedDict('Points', {'x': List[int], 'y': List[int]})
+
 
 class Line:
 
@@ -8,102 +12,109 @@ class Line:
         self.y1 = y1
         self.y2 = y2
 
-    #todo
-    #def is_horizontal
-    #def is_vertical
-    #def is_diag
+    def get_all_points(self) -> Points:
+        x_direction = 1
+        if self.x1 > self.x2:
+            x_direction = -1
+        y_direction = 1
+        if self.y1 > self.y2:
+            y_direction = -1
+        x = (
+            list(range(self.x1, self.x2 + x_direction, x_direction))
+            if self.x1 != self.x2
+            else [self.x1]
+        )
+        y = (
+            list(range(self.y1, self.y2 + y_direction, y_direction))
+            if self.y1 != self.y2
+            else [self.y1]
+        )
 
-    def get_all_points(self):
-        x = list(range(min(self.x1, self.x2), max(self.x1, self.x2) + 1)) if self.x1 != self.x2 else [self.x1]
-        y = list(range(min(self.y1, self.y2), max(self.y1, self.y2) + 1)) if self.y1 != self.y2 else [self.y1]
-        return {'x': x, "y": y}        
+        return {'x': y, "y": x}
 
-def read_data(file_name: str) -> List[str]:
+
+def read_data(file_name: str) -> List[Line]:
     data = []
     with open(file_name, 'r') as file:
         for line in file:
-           vector = line.split('->')
-           data.append(Line(*[int(x) for x in vector[0].split(',')], *[int(x) for x in vector[1].split(',')]))
+            vector = line.split('->')
+            data.append(
+                Line(
+                    *[int(x) for x in vector[0].split(',')],
+                    *[int(x) for x in vector[1].split(',')],
+                ),
+            )
     return data
+
+
+def get_lines_points(
+    lines: List[Line], use_diagonal: bool = False
+) -> Tuple[List[Points], int, int]:
+    points = []
+    max_x = 0
+    max_y = 0
+    for line in lines:
+        line_points = line.get_all_points()
+        if len(line_points['x']) == 1 or len(line_points['y']) == 1:
+            if len(line_points['x']) > len(line_points['y']):
+                line_points['y'] = line_points['y'] * len(line_points['x'])
+
+            if len(line_points['y']) > len(line_points['x']):
+                line_points['x'] = line_points['x'] * len(line_points['y'])
+
+            points.append(line_points)
+            if max(line_points['x']) > max_x:
+                max_x = max(line_points['x'])
+
+            if max(line_points['y']) > max_y:
+                max_y = max(line_points['y'])
+        elif use_diagonal:
+            points.append(line_points)
+            if max(line_points['x']) > max_x:
+                max_x = max(line_points['x'])
+
+            if max(line_points['y']) > max_y:
+                max_y = max(line_points['y'])
+
+    return (points, max_x, max_y)
+
+
+def build_map(points: List[Points], max_x: int, max_y: int) -> Matrix:
+    vents_map = [['.' for x in range(max_x + 1)] for y in range(max_y + 1)]
+
+    for data in points:
+        for index in range(len(data['x'])):
+            if vents_map[data['x'][index]][data['y'][index]] == '.':
+                vents_map[data['x'][index]][data['y'][index]] = 1
+            else:
+                vents_map[data['x'][index]][data['y'][index]] += 1
+
+    return vents_map
+
+
+def get_intersections(vents_map: Matrix) -> int:
+    summ = 0
+    for row in vents_map:
+        summ += sum(isinstance(x, int) and x > 1 for x in row)
+
+    return summ
+
 
 def part1(file_path: str) -> int:
     lines = read_data(file_path)
 
-    part1_data = []
-    max_x = 0
-    max_y = 0
-    for line in lines:
-        points = line.get_all_points()
-        if len(points['x']) == 1 or len(points['y']) == 1:
-            if len(points['x']) > len(points['y']):
-                points['y'] = points['y']*len(points['x'])
+    line_points, max_x, max_y = get_lines_points(lines)
 
-            if len(points['y']) > len(points['x']):
-                points['x'] = points['x']* len(points['y'])
+    vent_map = build_map(line_points, max_x, max_y)
 
-            part1_data.append(points)
-            if max(points['x']) > max_x:
-                max_x = max(points['x'])
+    return get_intersections(vent_map)
 
-            if max(points['y']) > max_y:
-                max_y = max(points['y'])
-
-    vent_map = [ ['.' for x in range(max_x  + 1)] for y in  range(max_y + 1)]
-
-    for data in part1_data:
-        for index in range(len(data['x'])):
-            if vent_map[data['x'][index]][data['y'][index]] == '.':
-                vent_map[data['x'][index]][data['y'][index]] = 1
-            else:
-                vent_map[data['x'][index]][data['y'][index]] += 1
-
-    summ = 0
-    for row in vent_map:
-        summ += sum(isinstance(x, int) and x > 1 for x in row)
-    
-    return summ
 
 def part2(file_path: str) -> int:
     lines = read_data(file_path)
 
-    part1_data = []
-    max_x = 0
-    max_y = 0
-    for line in lines:
-        points = line.get_all_points()
-        if len(points['x']) == 1 or len(points['y']) == 1:
-            if len(points['x']) > len(points['y']):
-                points['y'] = points['y']*len(points['x'])
+    line_points, max_x, max_y = get_lines_points(lines, True)
 
-            if len(points['y']) > len(points['x']):
-                points['x'] = points['x']* len(points['y'])
+    vent_map = build_map(line_points, max_x, max_y)
 
-            part1_data.append(points)
-            if max(points['x']) > max_x:
-                max_x = max(points['x'])
-
-            if max(points['y']) > max_y:
-                max_y = max(points['y'])
-        else:
-            if all(x in points['x'] for x in  points['y']):
-                part1_data.append(points)
-                if max(points['x']) > max_x:
-                    max_x = max(points['x'])
-
-                if max(points['y']) > max_y:
-                    max_y = max(points['y'])
-
-    vent_map = [ ['.' for x in range(max_x  + 1)] for y in  range(max_y + 1)]
-
-    for data in part1_data:
-        for index in range(len(data['x'])):
-            if vent_map[data['x'][index]][data['y'][index]] == '.':
-                vent_map[data['x'][index]][data['y'][index]] = 1
-            else:
-                vent_map[data['x'][index]][data['y'][index]] += 1
-
-    summ = 0
-    for row in vent_map:
-        summ += sum(isinstance(x, int) and x > 1 for x in row)
-    
-    return summ
+    return get_intersections(vent_map)
