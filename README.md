@@ -14,7 +14,7 @@ not all puzzles was cleared.
 | [Sonar Sweep](https://adventofcode.com/2021/day/1)              |   +    |   +    |
 | [Dive!](https://adventofcode.com/2021/day/2)                    |   +    |   +    |
 | [Binary Diagnostic](https://adventofcode.com/2021/day/3)        |   +    |   +    |
-| [Giant Squid](https://adventofcode.com/2021/day/4)              |   +    |   -    |
+| [Giant Squid](https://adventofcode.com/2021/day/4)              |   +    |   +    |
 | [Hydrothermal Venture](https://adventofcode.com/2021/day/5)     |   +    |   -    |
 | [Lanternfish](https://adventofcode.com/2021/day/6)              |   +    |   +    |
 | [The Treachery of Whales](https://adventofcode.com/2021/day/7)  |   +    |   -    |
