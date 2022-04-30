@@ -27,3 +27,11 @@ def get_day_folder(date):
 
 def get_tests_folder():
     return f"{os.getcwd()}/aoc/tests"
+
+
+def get_templates_folder():
+    return f"{os.getcwd()}/cli/templates"
+
+
+def get_root():
+    return os.getcwd()
