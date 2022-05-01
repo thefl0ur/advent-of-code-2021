@@ -1,4 +1,10 @@
 
+02.05.2022
+
+Solve part 2 for day 7.
+
+That puzzle relates to math, which I don't know well. I program algorithm I head about, rather than write my owm. 
+
 01.05.2022
 
 Solve part 2 of day 5. I was so close to solve back in days. I'm still tired so I do nothing to properly optimize code.

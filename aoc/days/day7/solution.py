@@ -10,11 +10,25 @@ def read_data(file_name: str) -> List[str]:
     return data
 
 
+def fiel_consumption(point: int) -> float:
+    return point * (point + 1) / 2
+
+
 def part1(file_path: str) -> int:
     data = read_data(file_path)
     target_point = statistics.median(data)
-    return sum([abs(x - target_point) for x in data])
+    return int(sum([abs(x - target_point) for x in data]))
 
 
 def part2(file_path: str) -> int:
-    raise NotImplemented('No code for day7 part 2')
+    data = read_data(file_path)
+    mean = int(statistics.mean(data))
+
+    return int(
+        min(
+            [
+                sum([fiel_consumption(abs(x - target_point)) for x in data])
+                for target_point in [mean - 1, mean, mean + 1]
+            ]
+        )
+    )

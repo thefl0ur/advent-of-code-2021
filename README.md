@@ -17,7 +17,7 @@ not all puzzles was cleared.
 | [Giant Squid](https://adventofcode.com/2021/day/4)              |   +    |   +    |
 | [Hydrothermal Venture](https://adventofcode.com/2021/day/5)     |   +    |   +    |
 | [Lanternfish](https://adventofcode.com/2021/day/6)              |   +    |   +    |
-| [The Treachery of Whales](https://adventofcode.com/2021/day/7)  |   +    |   -    |
+| [The Treachery of Whales](https://adventofcode.com/2021/day/7)  |   +    |   +    |
 | [Seven Segment Search](https://adventofcode.com/2021/day/8)     |   +    |   -    |
 | [Smoke Basin](https://adventofcode.com/2021/day/9)              |   +    |   -    |
 | [Syntax Scoring](https://adventofcode.com/2021/day/10)          |   +    |   +    |
