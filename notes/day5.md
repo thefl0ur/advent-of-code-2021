@@ -47,3 +47,11 @@ Instead of using `lambda` in `filter` I move that login into local function in c
 |   DAY |   MEM 1, Kb | TIME 1         |   MEM 2, Kb | TIME 2         |
 |-------|-------------|----------------|-------------|----------------|
 |     5 |     13151.7 | 0:00:00.230683 |     18286.2 | 0:00:00.272033 |
+
+Tired of joke when x as actual y and visa verse. Find and fix this.
+Slightly simplify finding `max_x` and `max_y`.
+Refactor `get_all_points` method. Don't think it give any significant impact on performance.
+
+|   DAY |   MEM 1, Kb | TIME 1         |   MEM 2, Kb | TIME 2         |
+|-------|-------------|----------------|-------------|----------------|
+|     5 |     13151.8 | 0:00:00.235130 |     18286.3 | 0:00:00.274364 |

@@ -13,24 +13,17 @@ class Line:
         self.y2 = y2
 
     def get_all_points(self) -> Points:
-        x_direction = 1
-        if self.x1 > self.x2:
-            x_direction = -1
-        y_direction = 1
-        if self.y1 > self.y2:
-            y_direction = -1
-        x = (
-            list(range(self.x1, self.x2 + x_direction, x_direction))
-            if self.x1 != self.x2
-            else [self.x1]
-        )
-        y = (
-            list(range(self.y1, self.y2 + y_direction, y_direction))
-            if self.y1 != self.y2
-            else [self.y1]
-        )
+        x = self._get_line(self.x1, self.x2)
+        y = self._get_line(self.y1, self.y2)
 
-        return {'x': y, "y": x}
+        return {'x': x, "y": y}
+
+    def _get_line(self, start: int, end: int) -> List[int]:
+        if start == end:
+            return [start]
+
+        direction = 1 if start < end else -1
+        return list(range(start, end + direction, direction))
 
 
 def read_data(file_name: str) -> List[Line]:
@@ -63,18 +56,13 @@ def get_lines_points(
                 line_points['x'] = line_points['x'] * len(line_points['y'])
 
             points.append(line_points)
-            if max(line_points['x']) > max_x:
-                max_x = max(line_points['x'])
+            max_x = max(max(line_points['x']), max_x)
+            max_y = max(max(line_points['y']), max_y)
 
-            if max(line_points['y']) > max_y:
-                max_y = max(line_points['y'])
         elif use_diagonal:
             points.append(line_points)
-            if max(line_points['x']) > max_x:
-                max_x = max(line_points['x'])
-
-            if max(line_points['y']) > max_y:
-                max_y = max(line_points['y'])
+            max_x = max(max(line_points['x']), max_x)
+            max_y = max(max(line_points['y']), max_y)
 
     return (points, max_x, max_y)
 
@@ -82,8 +70,8 @@ def get_lines_points(
 def build_map(points: List[Points], max_x: int, max_y: int) -> Matrix:
     vents_map = [[0 for _ in range(max_x + 1)] for _ in range(max_y + 1)]
     for data in points:
-        for index, _ in enumerate(data['x']):
-            vents_map[data['x'][index]][data['y'][index]] += 1
+        for index, _ in enumerate(data['y']):
+            vents_map[data['y'][index]][data['x'][index]] += 1
 
     return vents_map
 
