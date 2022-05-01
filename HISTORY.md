@@ -1,7 +1,10 @@
 
 01.05.2022
 
-Solve part 2 of day 5. I was so close to solve back in days. I actually pretty tired of this puzzles, so I do nothing to properly optimize code.
+Solve part 2 of day 5. I was so close to solve back in days. I'm still tired so I do nothing to properly optimize code.
+
+Also added day 6 solution, fortunately it is so good, I don't know how to make it better.
+
 
 30.04.2022
 
