@@ -35,3 +35,15 @@ Code was so general than I easily split it in functions. So small change and so 
 |   DAY |   MEM 1, Kb | TIME 1         |   MEM 2, Kb | TIME 2         |
 |-------|-------------|----------------|-------------|----------------|
 |     5 |       13142 | 0:00:00.353127 |     18276.4 | 0:00:00.435212 |
+
+Looking through profiler I find slowest parts of code:
+`get_intersections`, `build_map`, `get_lines_points` and `read_data`.
+
+First, I change map - i go to work with integer values only, so later I can use arithmetics in calculation and drop type checking.
+
+Next, I replace my summing loop with sweet combination of `sum`, `len` and `filter` over list comprehension. 
+Instead of using `lambda` in `filter` I move that login into local function in case of small speed improvement.
+
+|   DAY |   MEM 1, Kb | TIME 1         |   MEM 2, Kb | TIME 2         |
+|-------|-------------|----------------|-------------|----------------|
+|     5 |     13151.7 | 0:00:00.230683 |     18286.2 | 0:00:00.272033 |

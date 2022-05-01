@@ -80,24 +80,19 @@ def get_lines_points(
 
 
 def build_map(points: List[Points], max_x: int, max_y: int) -> Matrix:
-    vents_map = [['.' for x in range(max_x + 1)] for y in range(max_y + 1)]
-
+    vents_map = [[0 for _ in range(max_x + 1)] for _ in range(max_y + 1)]
     for data in points:
-        for index in range(len(data['x'])):
-            if vents_map[data['x'][index]][data['y'][index]] == '.':
-                vents_map[data['x'][index]][data['y'][index]] = 1
-            else:
-                vents_map[data['x'][index]][data['y'][index]] += 1
+        for index, _ in enumerate(data['x']):
+            vents_map[data['x'][index]][data['y'][index]] += 1
 
     return vents_map
 
 
 def get_intersections(vents_map: Matrix) -> int:
-    summ = 0
-    for row in vents_map:
-        summ += sum(isinstance(x, int) and x > 1 for x in row)
+    def filter_expression(value):
+        return value > 1
 
-    return summ
+    return sum(len(list(filter(filter_expression, row))) for row in vents_map)
 
 
 def part1(file_path: str) -> int:
