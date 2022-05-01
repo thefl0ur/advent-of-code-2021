@@ -1,4 +1,8 @@
 
+01.05.2022
+
+Solve part 2 of day 5. I was so close to solve back in days. I actually pretty tired of this puzzles, so I do nothing to properly optimize code.
+
 30.04.2022
 
 Finally solve part 2 of Day 4 puzzle. Pretty tired of all this and almost do noting to optimize my code. May by do it later?
