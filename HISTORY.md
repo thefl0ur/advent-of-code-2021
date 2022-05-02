@@ -1,3 +1,10 @@
+03.05.2022
+
+Solve part 2 for day 8.
+
+What I do with my live? Why I spend half of weekend thing to connect wires in 7-segment display?
+
+Some ideas of algorithm I find in [this post](https://medium.com/xorum-io/ideas-and-solutions-for-advent-of-code-2021-in-kotlin-part-2-4-5079d5066653) and various threads on reddit. 
 
 02.05.2022
 

@@ -32,12 +32,19 @@ Algorithm is based on segments overlapping.
 We already knew some numbers (1, 4, 7 and 8) and we hate to get lest and detect which number is which display segment. This is needed for detection more complex numbers.
 
 We initialize segments with next data:
-segment `a` - all from number 7 minus all from number 1. 
-segment `b` - all from number 4 minus all from number 1. 
+
+segment `a` - all from number 7 minus all from number 1.
+
+segment `b` - all from number 4 minus all from number 1.
+
 segment `c` - all from number 1
-segment `d` - all from number 4 minus all from number 1. 
+
+segment `d` - all from number 4 minus all from number 1.
+
 segment `e` - empty
+
 segment `f` - all from number 1
+
 segment `g` - empty
 
 There are 6 numbers left, grouped by segments length.
@@ -45,13 +52,13 @@ There are 6 numbers left, grouped by segments length.
 We start with 5-segment group.
 
 We can filter number 5 by validation that all from segments `b` and `d`.
-After what we can confirm which segment in number 1 in charge for `c` and `f` segments
+After what we can confirm which segment in number 1 in charge for `c` and `f` segments.
 
 Next we find numbers 3 and 2. 
 In number 3 no `f` segment and segment `c` is presented.
 Number 2 is last from 5-segments group.
 
-In remaining group we fan filter number 6 as number 8 minus segment `c`
+In remaining group we can filter number 6 as number 8 minus segment `c`
 
 Now we have to find segment `d` to detect remaining numbers.
 We can find `d` as intersection of number 2 and what we think is `d`.
@@ -65,3 +72,20 @@ Performance:
 |-------|-------------|----------------|-------------|----------------|
 |     8 |       41.72 | 0:00:00.001595 |      41.584 | 0:00:00.025164 |
 
+Looking on puzzle first thing I want to optimize was reading.
+As we operate one line in time I modify both algorithms.
+Also wok with file is almost similar in both parts, so i move that code in function.
+
+Intermediate result:
+
+|   DAY |   MEM 2, Kb | TIME 2         |   MEM 2, Kb | TIME 2         |
+|-------|-------------|----------------|-------------|----------------|
+|     8 |     21.6576 | 0:00:00.001080 |     29.9416 | 0:00:00.024763 |
+
+After I play a little bit more with code, but no big changes.
+
+Final results:
+
+|   DAY |   MEM 1, Kb | TIME 1         |   MEM 2, Kb | TIME 2         |
+|-------|-------------|----------------|-------------|----------------|
+|     8 |     21.6576 | 0:00:00.001099 |      24.352 | 0:00:00.023079 |
