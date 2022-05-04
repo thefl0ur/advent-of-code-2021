@@ -1,4 +1,4 @@
-RANKS = {')':3, ']':57, '}': 1197, '>':25137}
+RANKS = {')': 3, ']': 57, '}': 1197, '>': 25137}
 FIXING_RANKS = {'(': 1, '{': 3, '[': 2, '<': 4}
 
 
@@ -11,19 +11,12 @@ def read_data(file_name: str):
 
 def process_line(line):
     stack = []
-    for index in range(len(line)):
-        if line[index] in FIXING_RANKS.keys():
-            stack.append(line[index])
+    for char in line:
+        if char in FIXING_RANKS.keys():
+            stack.append(char)
         else:
-            bracket = stack.pop()
-            if bracket == '(' and line[index] != ')':
-                return line[index]
-            if bracket == '[' and line[index] != ']':
-                return line[index]
-            if bracket == '{' and line[index] != '}':
-                return line[index]
-            if bracket == '<' and line[index] != '>':
-                return line[index]
+            if abs(ord(stack.pop()) - ord(char)) > 2:
+                return char
 
 
 def process_inc_line(line):
@@ -46,7 +39,7 @@ def process_inc_line(line):
             if bracket == '<' and line[index] != '>':
                 have_error = True
                 break
-    
+
     if have_error:
         return None
     else:
@@ -62,11 +55,11 @@ def falc_fixing_score(stack):
 
 
 def part1(file_path: str) -> int:
-    data = read_data(file_path)
-    incorrect = []
-    for line in data:
-        incorrect.append(process_line(line))
-    return sum(RANKS[x] if x is not None else 0 for x in [y if y not in FIXING_RANKS.keys() else None for y in incorrect])
+    with open(file_path, 'r') as file:
+        incorrect = [char for line in file if (char := process_line(line.strip()))]
+    return sum(
+        RANKS[x] for x in incorrect
+    )
 
 
 def part2(file_path: str) -> int:
@@ -77,4 +70,4 @@ def part2(file_path: str) -> int:
         if fix_stack is not None:
             scores.append(falc_fixing_score(fix_stack))
     scores.sort()
-    return scores[int((len(scores)- 1)/2)]
+    return scores[int((len(scores) - 1)/2)]
