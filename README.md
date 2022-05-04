@@ -19,7 +19,7 @@ not all puzzles was cleared.
 | [Lanternfish](https://adventofcode.com/2021/day/6)              |   +    |   +    |
 | [The Treachery of Whales](https://adventofcode.com/2021/day/7)  |   +    |   +    |
 | [Seven Segment Search](https://adventofcode.com/2021/day/8)     |   +    |   +    |
-| [Smoke Basin](https://adventofcode.com/2021/day/9)              |   +    |   -    |
+| [Smoke Basin](https://adventofcode.com/2021/day/9)              |   +    |   +    |
 | [Syntax Scoring](https://adventofcode.com/2021/day/10)          |   +    |   +    |
 | [Dumbo Octopus](https://adventofcode.com/2021/day/11)           |   +    |   +    |
 | [Passage Pathing](https://adventofcode.com/2021/day/12)         |   +    |   +    |

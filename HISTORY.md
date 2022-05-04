@@ -1,3 +1,8 @@
+
+04.05.2022
+
+Day 9 added. Thanks to [this article](https://10xlearner.com/2022/02/28/advent-of-code-2021-smoke-basin-puzzle-9/) for opening my eyes on existing algorithms.
+
 03.05.2022
 
 Solve part 2 for day 8.
