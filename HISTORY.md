@@ -1,5 +1,13 @@
 
-05.05.2020
+23.05.2022
+
+Finally find courage to properly solve day 12 puzzle.
+
+07.05.2022
+
+Was trying to optimize day 11 solution, but finish without any real improvements. 
+
+05.05.2022
 
 Refactor and optimize day 10 puzzles.
 
