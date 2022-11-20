@@ -1,3 +1,8 @@
+20.11.2022
+
+It's time
+Revisit day 14, change almost nothing and filally push it.
+
 28.05.2022
 
 Refactor my favorite puzzle so far.
